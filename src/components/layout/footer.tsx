@@ -27,7 +27,7 @@ export function Footer() {
               <Link href="/shaders" className="hover:text-white transition-colors">Shaders</Link>
               <Link href="/docs" className="hover:text-white transition-colors">Docs</Link>
               <a
-                href="https://github.com/shaderdrop/shaderdrop"
+                href="https://github.com/ABE1617/ShaderDrop"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white transition-colors"
@@ -48,7 +48,7 @@ export function Footer() {
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-1">
               <a
-                href="https://github.com/shaderdrop/shaderdrop"
+                href="https://github.com/ABE1617/ShaderDrop"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg text-white/40 hover:text-white hover:bg-white/[0.05] transition-all"

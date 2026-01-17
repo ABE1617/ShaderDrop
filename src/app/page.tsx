@@ -39,7 +39,7 @@ export default function HomePage() {
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild className="text-base px-8 h-14 text-lg bg-white/[0.02] border-white/10 hover:bg-white/[0.05]">
-              <a href="https://github.com/shaderdrop/shaderdrop" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/ABE1617/ShaderDrop" target="_blank" rel="noopener noreferrer">
                 <Github className="mr-2 h-5 w-5" />
                 GitHub
               </a>
@@ -123,7 +123,7 @@ export default function HomePage() {
               </Link>
             </Button>
             <Button variant="outline" size="lg" asChild className="px-8 h-12 bg-white/[0.02] border-white/10 hover:bg-white/[0.05]">
-              <a href="https://github.com/shaderdrop/shaderdrop" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/ABE1617/ShaderDrop" target="_blank" rel="noopener noreferrer">
                 <Github className="mr-2 h-5 w-5" />
                 GitHub
               </a>

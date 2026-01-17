@@ -100,7 +100,7 @@ git push origin feat/my-shader`}</code>
         </p>
         <Button asChild size="sm">
           <a
-            href="https://github.com/shaderdrop/shaderdrop"
+            href="https://github.com/ABE1617/ShaderDrop"
             target="_blank"
             rel="noopener noreferrer"
           >

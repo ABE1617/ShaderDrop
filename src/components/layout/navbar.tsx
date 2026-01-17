@@ -83,7 +83,7 @@ export function Navbar() {
           {/* GitHub */}
           <div className="flex items-center gap-2">
             <a
-              href="https://github.com/shaderdrop/shaderdrop"
+              href="https://github.com/ABE1617/ShaderDrop"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-white/60 hover:text-white bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.06] hover:border-white/[0.12] transition-all"
