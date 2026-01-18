@@ -41,9 +41,9 @@ export function ShaderDetailClient({ shader, showMeta = false }: ShaderDetailCli
     <div className="space-y-8">
       {/* Preview + Controls Section */}
       <section>
-        <div className="flex flex-col lg:flex-row gap-6">
+        <div className="flex flex-col lg:flex-row gap-4 sm:gap-6">
           {/* Shader Preview */}
-          <div className="flex-1 min-w-0 h-[450px] lg:h-[550px]">
+          <div className="flex-1 min-w-0 h-[280px] sm:h-[350px] md:h-[450px] lg:h-[550px]">
             <ShaderPreview
               slug={shader.slug as ShaderSlug}
               uniforms={values}
@@ -54,9 +54,9 @@ export function ShaderDetailClient({ shader, showMeta = false }: ShaderDetailCli
 
           {/* Controls Panel - with proper scroll containment */}
           {shader.uniforms.length > 0 && (
-            <div className="lg:w-80 xl:w-96 flex-shrink-0 h-auto lg:h-[550px]">
+            <div className="w-full lg:w-80 xl:w-96 flex-shrink-0 h-auto lg:h-[550px]">
               <div
-                className="h-full lg:max-h-[550px] overflow-y-auto overscroll-contain custom-scrollbar rounded-2xl bg-white/[0.02] border border-white/[0.06]"
+                className="h-full max-h-[400px] sm:max-h-[450px] lg:max-h-[550px] overflow-y-auto overscroll-contain custom-scrollbar rounded-2xl bg-white/[0.02] border border-white/[0.06]"
                 onWheel={(e) => e.stopPropagation()}
               >
                 <ShaderControls
@@ -73,22 +73,24 @@ export function ShaderDetailClient({ shader, showMeta = false }: ShaderDetailCli
 
       {/* Description & Tags - Below Preview */}
       {showMeta && (
-        <section className="rounded-2xl bg-white/[0.02] border border-white/[0.06] p-6">
-          <p className="text-white/60 mb-5 leading-relaxed">
+        <section className="rounded-2xl bg-white/[0.02] border border-white/[0.06] p-4 sm:p-6">
+          <p className="text-white/60 mb-4 sm:mb-5 leading-relaxed text-sm sm:text-base">
             {shader.description}
           </p>
-          <div className="flex flex-wrap items-center gap-3">
-            {shader.tags.map((tag) => (
-              <Badge
-                key={tag}
-                variant="secondary"
-                className="bg-white/[0.04] border border-white/[0.08] text-white/70 px-3 py-1.5 hover:bg-white/[0.08] transition-colors"
-              >
-                {tag}
-              </Badge>
-            ))}
+          <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2">
+              {shader.tags.map((tag) => (
+                <Badge
+                  key={tag}
+                  variant="secondary"
+                  className="bg-white/[0.04] border border-white/[0.08] text-white/70 px-3 py-1.5 hover:bg-white/[0.08] transition-colors text-xs sm:text-sm"
+                >
+                  {tag}
+                </Badge>
+              ))}
+            </div>
             {shader.author && (
-              <span className="text-sm text-white/40 flex items-center gap-1.5 ml-auto">
+              <span className="text-sm text-white/40 flex items-center gap-1.5 sm:ml-auto">
                 by{" "}
                 {shader.authorUrl ? (
                   <a

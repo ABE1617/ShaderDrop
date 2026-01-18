@@ -101,19 +101,19 @@ export default function CustomizationPage() {
           </p>
 
           <div className="space-y-3">
-            <div className="flex items-center justify-between p-3 rounded-lg bg-black/20">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2 p-3 rounded-lg bg-black/20">
               <code className="text-xs text-white/60 font-mono">LiquidMetal</code>
               <code className="text-xs text-white/40 font-mono">baseColor, highlightColor</code>
             </div>
-            <div className="flex items-center justify-between p-3 rounded-lg bg-black/20">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2 p-3 rounded-lg bg-black/20">
               <code className="text-xs text-white/60 font-mono">SilkFlow</code>
-              <code className="text-xs text-white/40 font-mono">color1, color2, color3, bgColor</code>
+              <code className="text-xs text-white/40 font-mono break-all">color1, color2, color3, bgColor</code>
             </div>
-            <div className="flex items-center justify-between p-3 rounded-lg bg-black/20">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2 p-3 rounded-lg bg-black/20">
               <code className="text-xs text-white/60 font-mono">NeonHorizon</code>
-              <code className="text-xs text-white/40 font-mono">skyColor1, skyColor2, gridColor, sunColor</code>
+              <code className="text-xs text-white/40 font-mono break-all">skyColor1, skyColor2, gridColor, sunColor</code>
             </div>
-            <div className="flex items-center justify-between p-3 rounded-lg bg-black/20">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2 p-3 rounded-lg bg-black/20">
               <code className="text-xs text-white/60 font-mono">GradientOrbs</code>
               <code className="text-xs text-white/40 font-mono">color1-4, bgColor</code>
             </div>

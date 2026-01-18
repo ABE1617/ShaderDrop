@@ -133,27 +133,27 @@ export default function Page() {
       </section>
 
       {/* Next */}
-      <div className="flex gap-3">
+      <div className="flex flex-col sm:flex-row gap-3">
         <Link
           href="/docs/customization"
           className="flex-1 group flex items-center gap-3 p-4 rounded-xl bg-white/[0.02] hover:bg-white/[0.04] border border-white/[0.06] transition-colors"
         >
-          <div>
+          <div className="min-w-0">
             <div className="font-medium text-sm text-white">Customization</div>
             <div className="text-xs text-white/40">Props & colors</div>
           </div>
-          <ArrowRight className="h-4 w-4 text-white/30 ml-auto group-hover:translate-x-1 transition-transform" />
+          <ArrowRight className="h-4 w-4 text-white/30 ml-auto flex-shrink-0 group-hover:translate-x-1 transition-transform" />
         </Link>
 
         <Link
           href="/shaders"
           className="flex-1 group flex items-center gap-3 p-4 rounded-xl bg-white/[0.02] hover:bg-white/[0.04] border border-white/[0.06] transition-colors"
         >
-          <div>
+          <div className="min-w-0">
             <div className="font-medium text-sm text-white">Browse Shaders</div>
             <div className="text-xs text-white/40">View collection</div>
           </div>
-          <ArrowRight className="h-4 w-4 text-white/30 ml-auto group-hover:translate-x-1 transition-transform" />
+          <ArrowRight className="h-4 w-4 text-white/30 ml-auto flex-shrink-0 group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>
     </div>

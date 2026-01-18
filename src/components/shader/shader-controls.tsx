@@ -228,27 +228,27 @@ export function ShaderControls({
   return (
     <div className={cn("overflow-hidden", className)}>
       {/* Header */}
-      <div className="sticky top-0 z-10 px-5 py-4 flex items-center justify-between bg-black/60 backdrop-blur-xl border-b border-white/[0.06]">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-purple-500/20 to-fuchsia-500/20 flex items-center justify-center">
-            <Sliders className="w-4 h-4 text-purple-400" />
+      <div className="sticky top-0 z-10 px-4 sm:px-5 py-3 sm:py-4 flex items-center justify-between bg-black/60 backdrop-blur-xl border-b border-white/[0.06]">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-gradient-to-br from-purple-500/20 to-fuchsia-500/20 flex items-center justify-center flex-shrink-0">
+            <Sliders className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-400" />
           </div>
-          <span className="font-semibold text-white/90">Customize</span>
+          <span className="font-semibold text-sm sm:text-base text-white/90">Customize</span>
         </div>
         {onReset && (
           <Button
             variant="ghost"
             size="sm"
             onClick={onReset}
-            className="text-white/40 hover:text-white hover:bg-white/[0.08] h-8 px-3 text-xs rounded-lg"
+            className="text-white/40 hover:text-white hover:bg-white/[0.08] h-8 px-2 sm:px-3 text-xs rounded-lg"
           >
-            <RotateCcw className="h-3.5 w-3.5 mr-1.5" />
-            Reset
+            <RotateCcw className="h-3.5 w-3.5 sm:mr-1.5" />
+            <span className="hidden sm:inline">Reset</span>
           </Button>
         )}
       </div>
 
-      <div className="p-5 space-y-6">
+      <div className="p-4 sm:p-5 space-y-5 sm:space-y-6">
         {/* Color Controls Section */}
         {colorUniforms.length > 0 && (
           <div className="space-y-3">
