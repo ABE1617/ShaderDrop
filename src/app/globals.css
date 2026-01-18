@@ -374,3 +374,13 @@ canvas {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
+
+/* Hide scrollbar but allow scrolling */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

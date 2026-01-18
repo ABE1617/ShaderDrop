@@ -177,8 +177,8 @@ export function ShaderPreview({
           </Button>
         </div>
 
-        {/* ESC hint - positioned to avoid template logo overlap */}
-        <div className="absolute top-16 left-6 text-white/40 text-xs z-30 px-2 py-1 rounded bg-black/30 backdrop-blur-sm">
+        {/* ESC hint - hidden on mobile since there's no ESC key */}
+        <div className="hidden sm:block absolute top-16 left-6 text-white/40 text-xs z-30 px-2 py-1 rounded bg-black/30 backdrop-blur-sm">
           Press ESC to exit
         </div>
       </div>

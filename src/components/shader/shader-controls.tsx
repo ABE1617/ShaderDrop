@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useCallback, useState } from "react"
+import { useRef, useCallback, useState, useEffect } from "react"
 import { RotateCcw, ChevronDown, Palette, Sliders } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -134,8 +134,18 @@ export function ShaderControls({
   onReset,
   className,
 }: ShaderControlsProps) {
+  // Start collapsed on mobile, expanded on desktop
   const [colorsExpanded, setColorsExpanded] = useState(true)
   const [paramsExpanded, setParamsExpanded] = useState(true)
+
+  // Collapse sections on mobile by default
+  useEffect(() => {
+    const isMobile = window.innerWidth < 640 // sm breakpoint
+    if (isMobile) {
+      setColorsExpanded(false)
+      setParamsExpanded(false)
+    }
+  }, [])
 
   // Separate uniforms by type
   const colorUniforms = uniforms.filter((u) => u.type === "color")
