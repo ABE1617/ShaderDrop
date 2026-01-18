@@ -114,6 +114,7 @@ function useShaderRenderer(
 
     const resolutionLoc = gl.getUniformLocation(program, "u_resolution")
     const resize = () => {
+      if (!canvas.clientWidth || !canvas.clientHeight) return
       const dpr = Math.min(window.devicePixelRatio, MAX_DPR)
       canvas.width = canvas.clientWidth * dpr
       canvas.height = canvas.clientHeight * dpr
@@ -121,12 +122,19 @@ function useShaderRenderer(
       gl.uniform2f(resolutionLoc, canvas.width, canvas.height)
     }
 
+    // Use ResizeObserver for more reliable sizing on mobile
+    const resizeObserver = new ResizeObserver(() => {
+      resize()
+    })
+    resizeObserver.observe(canvas)
+
     resize()
     window.addEventListener("resize", resize)
     if (isPlaying) render()
 
     return () => {
       observer.disconnect()
+      resizeObserver.disconnect()
       window.removeEventListener("resize", resize)
       cancelAnimationFrame(animationRef.current)
       // Clean up WebGL resources
@@ -336,7 +344,7 @@ export function LiquidMetalShader({
   )
 
   const canvasRef = useShaderRenderer(liquidMetalFragmentShader, uniformSetup, speed, isPlaying)
-  return <canvas ref={canvasRef} className={className} style={{ width: "100%", height: "100%" }} />
+  return <canvas ref={canvasRef} className={`w-full h-full block ${className || ''}`} />
 }
 
 // ============================================
@@ -556,7 +564,7 @@ export function NeonHorizonShader({
   )
 
   const canvasRef = useShaderRenderer(neonHorizonFragmentShader, uniformSetup, speed, isPlaying)
-  return <canvas ref={canvasRef} className={className} style={{ width: "100%", height: "100%" }} />
+  return <canvas ref={canvasRef} className={`w-full h-full block ${className || ''}`} />
 }
 
 // ============================================
@@ -828,7 +836,7 @@ export function VoronoiShader({
   )
 
   const canvasRef = useShaderRenderer(voronoiFragmentShader, uniformSetup, speed, isPlaying)
-  return <canvas ref={canvasRef} className={className} style={{ width: "100%", height: "100%" }} />
+  return <canvas ref={canvasRef} className={`w-full h-full block ${className || ''}`} />
 }
 
 // ============================================
@@ -1530,7 +1538,7 @@ export function PixelArtShader({
   )
 
   const canvasRef = useShaderRenderer(pixelArtFragmentShader, uniformSetup, speed, isPlaying)
-  return <canvas ref={canvasRef} className={className} style={{ width: "100%", height: "100%" }} />
+  return <canvas ref={canvasRef} className={`w-full h-full block ${className || ''}`} />
 }
 
 // ============================================
@@ -1822,7 +1830,7 @@ export function FluidInkShader({
   )
 
   const canvasRef = useShaderRenderer(fluidInkFragmentShader, uniformSetup, speed, isPlaying)
-  return <canvas ref={canvasRef} className={className} style={{ width: "100%", height: "100%" }} />
+  return <canvas ref={canvasRef} className={`w-full h-full block ${className || ''}`} />
 }
 
 // ==================== AURORA MESH SHADER ====================
@@ -2065,7 +2073,7 @@ export function AuroraMeshShader({
   )
 
   const canvasRef = useShaderRenderer(auroraMeshFragmentShader, uniformSetup, speed, isPlaying)
-  return <canvas ref={canvasRef} className={className} style={{ width: "100%", height: "100%" }} />
+  return <canvas ref={canvasRef} className={`w-full h-full block ${className || ''}`} />
 }
 
 // ==================== WAVE TERRAIN SHADER ====================
@@ -2392,7 +2400,7 @@ export function WaveTerrainShader({
   )
 
   const canvasRef = useShaderRenderer(waveTerrainFragmentShader, uniformSetup, speed, isPlaying)
-  return <canvas ref={canvasRef} className={className} style={{ width: "100%", height: "100%" }} />
+  return <canvas ref={canvasRef} className={`w-full h-full block ${className || ''}`} />
 }
 
 // ==================== GRADIENT ORBS SHADER ====================
@@ -2761,7 +2769,7 @@ export function GradientOrbsShader({
   )
 
   const canvasRef = useShaderRenderer(gradientOrbsFragmentShader, uniformSetup, speed, isPlaying)
-  return <canvas ref={canvasRef} className={className} style={{ width: "100%", height: "100%" }} />
+  return <canvas ref={canvasRef} className={`w-full h-full block ${className || ''}`} />
 }
 
 // ==================== SILK FLOW SHADER ====================
@@ -2950,7 +2958,7 @@ export function SilkFlowShader({
   )
 
   const canvasRef = useShaderRenderer(silkFlowFragmentShader, uniformSetup, speed, isPlaying)
-  return <canvas ref={canvasRef} className={className} style={{ width: "100%", height: "100%" }} />
+  return <canvas ref={canvasRef} className={`w-full h-full block ${className || ''}`} />
 }
 
 // Shader component map

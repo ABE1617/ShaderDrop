@@ -43,12 +43,12 @@ export function ShaderDetailClient({ shader, showMeta = false }: ShaderDetailCli
       <section>
         <div className="flex flex-col lg:flex-row gap-4 sm:gap-6">
           {/* Shader Preview */}
-          <div className="flex-1 min-w-0 h-[280px] sm:h-[350px] md:h-[450px] lg:h-[550px]">
+          <div className="w-full lg:flex-1 lg:min-w-0 h-[280px] sm:h-[350px] md:h-[450px] lg:h-[550px]">
             <ShaderPreview
               slug={shader.slug as ShaderSlug}
               uniforms={values}
               aspectRatio="none"
-              className="h-full"
+              className="h-full w-full"
             />
           </div>
 
