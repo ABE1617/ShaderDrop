@@ -39,11 +39,31 @@ function useShaderRenderer(
   const glRef = useRef<WebGLRenderingContext | null>(null)
   const programRef = useRef<WebGLProgram | null>(null)
   const isVisibleRef = useRef<boolean>(true)
+  const timeMultiplierRef = useRef(timeMultiplier)
+  const uniformSetupRef = useRef(uniformSetup)
+
+  // Keep refs updated without causing re-renders
+  useEffect(() => {
+    timeMultiplierRef.current = timeMultiplier
+  }, [timeMultiplier])
+
+  useEffect(() => {
+    uniformSetupRef.current = uniformSetup
+  }, [uniformSetup])
+
+  // Update uniforms when they change (without recreating WebGL context)
+  useEffect(() => {
+    const gl = glRef.current
+    const program = programRef.current
+    if (gl && program) {
+      uniformSetup(gl, program)
+    }
+  }, [uniformSetup])
 
   const render = useCallback(() => {
     const gl = glRef.current
     const program = programRef.current
-    if (!gl || !program || !isPlaying || !isVisibleRef.current) return
+    if (!gl || !program || !isVisibleRef.current) return
 
     const now = Date.now()
     // Frame rate throttling
@@ -54,11 +74,12 @@ function useShaderRenderer(
     lastFrameRef.current = now
 
     const elapsed = (now - startTimeRef.current) / 1000
-    gl.uniform1f(gl.getUniformLocation(program, "u_time"), elapsed * timeMultiplier)
+    gl.uniform1f(gl.getUniformLocation(program, "u_time"), elapsed * timeMultiplierRef.current)
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
     animationRef.current = requestAnimationFrame(render)
-  }, [timeMultiplier, isPlaying])
+  }, [])
 
+  // Initialize WebGL context only once (when fragmentShader changes or on mount)
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -67,7 +88,7 @@ function useShaderRenderer(
     const observer = new IntersectionObserver(
       (entries) => {
         isVisibleRef.current = entries[0]?.isIntersecting ?? false
-        if (isVisibleRef.current && isPlaying) {
+        if (isVisibleRef.current) {
           cancelAnimationFrame(animationRef.current)
           render()
         }
@@ -110,7 +131,8 @@ function useShaderRenderer(
     gl.enableVertexAttribArray(positionLoc)
     gl.vertexAttribPointer(positionLoc, 2, gl.FLOAT, false, 0, 0)
 
-    uniformSetup(gl, program)
+    // Initial uniform setup
+    uniformSetupRef.current(gl, program)
 
     const resolutionLoc = gl.getUniformLocation(program, "u_resolution")
     let lastWidth = 0
@@ -141,25 +163,29 @@ function useShaderRenderer(
 
     resize()
     window.addEventListener("resize", resize)
-    if (isPlaying) render()
+    render()
 
     return () => {
       observer.disconnect()
       resizeObserver.disconnect()
       window.removeEventListener("resize", resize)
       cancelAnimationFrame(animationRef.current)
+      glRef.current = null
+      programRef.current = null
       // Clean up WebGL resources
       gl.deleteProgram(program)
       gl.deleteShader(vShader)
       gl.deleteShader(fShader)
       gl.deleteBuffer(buffer)
     }
-  }, [fragmentShader, uniformSetup, render, isPlaying])
+  }, [fragmentShader, render])
 
+  // Handle play/pause
   useEffect(() => {
     if (isPlaying && isVisibleRef.current) {
+      cancelAnimationFrame(animationRef.current)
       render()
-    } else {
+    } else if (!isPlaying) {
       cancelAnimationFrame(animationRef.current)
     }
   }, [isPlaying, render])
