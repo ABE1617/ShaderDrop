@@ -113,11 +113,22 @@ function useShaderRenderer(
     uniformSetup(gl, program)
 
     const resolutionLoc = gl.getUniformLocation(program, "u_resolution")
+    let lastWidth = 0
+    let lastHeight = 0
+
     const resize = () => {
       if (!canvas.clientWidth || !canvas.clientHeight) return
       const dpr = Math.min(window.devicePixelRatio, MAX_DPR)
-      canvas.width = canvas.clientWidth * dpr
-      canvas.height = canvas.clientHeight * dpr
+      const newWidth = Math.floor(canvas.clientWidth * dpr)
+      const newHeight = Math.floor(canvas.clientHeight * dpr)
+
+      // Only resize if dimensions actually changed (prevents flickering)
+      if (newWidth === lastWidth && newHeight === lastHeight) return
+      lastWidth = newWidth
+      lastHeight = newHeight
+
+      canvas.width = newWidth
+      canvas.height = newHeight
       gl.viewport(0, 0, canvas.width, canvas.height)
       gl.uniform2f(resolutionLoc, canvas.width, canvas.height)
     }

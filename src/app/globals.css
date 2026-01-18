@@ -361,3 +361,16 @@
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+
+/* Shader canvas optimization - prevents flickering */
+canvas {
+  display: block;
+  image-rendering: optimizeSpeed;
+}
+
+/* GPU acceleration hint for shader containers */
+.shader-container {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}

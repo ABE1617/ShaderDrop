@@ -199,7 +199,7 @@ export function ShaderPreview({
     <div
       ref={containerRef}
       className={cn(
-        "relative overflow-hidden rounded-xl",
+        "relative overflow-hidden rounded-xl shader-container",
         "border border-white/10",
         "shadow-2xl shadow-purple-500/10",
         aspectClass,
