@@ -41,7 +41,7 @@ export default function DocsLayout({
         <div className="absolute top-[50%] left-[50%] w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] lg:w-[600px] lg:h-[600px] bg-violet-500/5 rounded-full blur-[100px] sm:blur-[140px] lg:blur-[180px]" />
       </div>
 
-      <div className="relative z-10 container mx-auto pt-20 sm:pt-24 lg:pt-28 pb-8 sm:pb-12 px-3 sm:px-4 max-w-6xl">
+      <div className="relative z-10 container mx-auto pt-24 sm:pt-28 lg:pt-32 pb-8 sm:pb-12 px-3 sm:px-4 max-w-6xl">
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-10">
           {/* Sidebar - horizontal scroll on mobile, vertical on desktop */}
           <aside className="w-full lg:w-64 flex-shrink-0">
