@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, Github, FileCode } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-  title: "Contributing - ShaderDrop",
+  title: "Contributing",
   description: "Submit shaders and contribute to ShaderDrop.",
 }
 

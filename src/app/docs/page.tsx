@@ -3,7 +3,7 @@ import Link from "next/link"
 import { ArrowRight, Download, FileCode } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Getting Started - ShaderDrop",
+  title: "Getting Started",
   description: "Add WebGL shader backgrounds to your Next.js project. Copy, paste, done.",
 }
 

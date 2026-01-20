@@ -21,10 +21,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!shader) return {}
 
   return {
-    title: `${shader.name} — ShaderDrop`,
+    title: shader.name,
     description: shader.description,
     openGraph: {
-      title: `${shader.name} — ShaderDrop`,
+      title: shader.name,
       description: shader.description,
       type: "article",
     },

@@ -3,7 +3,7 @@ import Link from "next/link"
 import { ArrowLeft, ArrowRight, Palette, Sliders } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Customization - ShaderDrop",
+  title: "Customization",
   description: "Customize shader colors, speed, and effects via props.",
 }
 

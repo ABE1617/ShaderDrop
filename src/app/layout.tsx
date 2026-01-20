@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://shaderdrop.dev"),
-  title: "ShaderDrop — Free Shader Backgrounds for Next.js",
+  title: "ShaderDrop",
   description:
     "Copy-paste WebGL shader backgrounds for your Next.js projects. Zero dependencies, fully customizable, MIT licensed.",
   keywords: ["shader", "webgl", "nextjs", "react", "background", "glsl"],

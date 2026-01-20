@@ -3,7 +3,7 @@ import { ShadersGallery } from "@/components/shader/shaders-gallery"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Shaders - ShaderDrop",
+  title: "Shaders",
   description: "WebGL shader backgrounds for React and Next.js.",
 }
 
